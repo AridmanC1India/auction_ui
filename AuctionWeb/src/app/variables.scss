@@ -1,0 +1,46 @@
+/******** sidebar color variables *********/
+$sidebar_bg : #223d4b;
+$sidebar_link_bg : #1b303a;
+$sidebar_link_bg_onHover : #ffffff;
+$sidebar_txt_color : #ffffff;
+$sidebar_txt_color_onHover : #111f26;
+$logo_circle_bg_color : #ffffff;
+$logo_circle_border_color : #547e93;
+
+/******** footer color variables *********/
+$copyright_footer_bg_color : #111f26;
+$copyright_footer_txtColor : #ffffff;
+
+/******** header color variables *********/
+$header_bg : #ffffff;
+
+/******** table color variables *********/
+$table_header_color : #355c71;
+$table_header_txt_color : #ffffff;
+$table_border_color : #ddd;
+$table_even_row_color : #f5f5f5;
+
+/******** content color variables *********/
+$content_bg : #eee;
+$body_txt_color : #222;
+
+/******** button color variables *********/
+$button_bg_color : #111f26;
+$button_txt_color : #fff;
+
+/******** tab color variables *********/
+$tab_bg_color : #355c71;
+$tab_txt_color : #ffffff;
+$active_tab_bg_color : #1b303a;
+$active_tab_txt_color : #fff;
+
+
+
+/********** global variables ***********/
+$body_txt_size : 13px;
+
+
+/********** width variables ***********/
+$sidebar_width : 220px;
+$content_Width : calc(100% - 220px);
+$logo_circle_width_height : 150px;

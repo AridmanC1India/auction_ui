@@ -1,0 +1,73 @@
+<div class="wrapper-login d-sm-flex">
+    <div class="card authCard">
+        <h3 class="authHeading">REGISTER</h3>
+        <form [formGroup]="registrationForm" (ngSubmit)="onSubmit(registrationForm)">
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="text" formControlName="firstName" class="form-control" placeholder="First Name" [ngClass]="{'is-valid': firstName.valid, 'is-invalid': firstName.invalid && firstName.touched}">
+                    <span class="fa fa-user"></span>
+                </div>
+                <div class="error" *ngIf="firstName.errors && (firstName.invalid && firstName.touched)">
+                    <span class="text-danger" *ngIf="firstName.errors?.required">First Name is required</span>
+                    <span class="text-danger" *ngIf="firstName.errors?.minlength">First Name must have atleast 4 characters</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="text" formControlName="lastName" class="form-control" placeholder="Last Name" [ngClass]="{'is-valid': lastName.valid, 'is-invalid': lastName.invalid && lastName.touched}">
+                    <span class="fa fa-user"></span>
+                </div>
+                <div class="error" *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
+                    <span class="text-danger" *ngIf="lastName.errors?.required">Last Name is required</span>
+                    <span class="text-danger" *ngIf="lastName.errors?.minlength">Last Name must have atleast 4 characters</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="email" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{'is-valid': email.valid, 'is-invalid': email.invalid && email.touched}">
+                    <span class="fa fa-envelope"></span>
+                </div>
+                <div class="error" *ngIf="email.errors && (email.invalid && email.touched)">
+                    <span class="text-danger" *ngIf="email.errors?.required">Email is required</span>
+                    <span class="text-danger" *ngIf="email.errors?.email">Please enter a valid email address</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password" pattern="(?=.*[!@#\$%\^&\*])" [ngClass]="{'is-valid': password.valid, 'is-invalid': password.invalid && password.touched}">
+                    <span class="fa fa-lock"></span>
+                </div>
+                <div class="error" *ngIf="password.errors && (password.invalid && password.touched)">
+                    <span class="text-danger" *ngIf="password.errors?.required">Password is required</span>
+                    <span class="text-danger" *ngIf="password.errors?.minlength">Password must have atleast 6 characters</span>
+                    <span class="text-danger" *ngIf="password.errors?.pattern">Password must have atleast 1 special character</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="password" formControlName="confirmPassword" class="form-control" placeholder="Confirm Password" [ngClass]="{'is-valid': confirmPassword.valid, 'is-invalid': confirmPassword.invalid && confirmPassword.touched}">
+                    <span class="fa fa-lock"></span>
+                </div>
+                <div class="error" *ngIf="confirmPassword.errors && (confirmPassword.invalid && confirmPassword.touched)">
+                    <span class="text-danger" *ngIf="confirmPassword.errors?.required">Password is required</span>
+                    <span class="text-danger" *ngIf="confirmPassword.errors?.NoPassswordMatch">Password do not match</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="tel" pattern="[789][0-9]{9}" formControlName="mobileNo" class="form-control" placeholder="Mobile Number" [ngClass]="{'is-valid': mobileNo.valid, 'is-invalid': mobileNo.invalid && mobileNo.touched}">
+                    <span class="fa fa-mobile"></span>
+                </div>
+                <div class="error" *ngIf="mobileNo.errors && (mobileNo.invalid && mobileNo.touched)">
+                    <span class="text-danger" *ngIf="mobileNo.errors?.required">Mobile Number is required</span>
+                    <span class="text-danger" *ngIf="mobileNo.errors?.pattern">Please enter a valid Mobile Number</span>
+                </div>
+            </div>
+            <button type="submit" [disabled]="registrationForm.invalid" class="btn btn-primary btn-block mt-3">Register</button>
+            <div class="auth-here">
+                Already have an account?
+                <a routerLink="/login">Login Here</a>
+            </div>
+        </form>
+    </div>
+</div>

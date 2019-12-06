@@ -1,0 +1,46 @@
+<div class="wrapper-login d-sm-flex">
+    <div class="card authCard">
+        <h3 class="authHeading">LOGIN</h3>
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm)">
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="email" formControlName="email" class="form-control" placeholder="Email" [ngClass]="{'is-valid': email.valid, 'is-invalid': email.invalid && email.touched}">
+                    <span class="fa fa-envelope"></span>
+                </div>
+                <div class="error" *ngIf="email.errors && (email.invalid && email.touched)">
+                    <span class="text-danger" *ngIf="email.errors?.required">Email is required</span>
+                    <span class="text-danger" *ngIf="email.errors?.email">Please enter a valid email address</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="control-block">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password" pattern="" [ngClass]="{'is-valid': password.valid, 'is-invalid': password.invalid && password.touched}">
+                    <span class="fa fa-lock"></span>
+                </div>
+                <div class="error" *ngIf="password.errors && (password.invalid && password.touched)">
+                    <span class="text-danger" *ngIf="password.errors?.required">Password is required</span>
+                    <span class="text-danger" *ngIf="password.errors?.minlength">Password must have atleast 6 characters</span>
+                    <!-- <span class="text-danger" *ngIf="password.errors?.pattern">Password must have aat least 1 lower case, 1 upper case, 1 numeric, 1 non-word and no whitespace</span> -->
+                </div>
+            </div>
+            <div class="flex-sb-m">
+                <div class="contact100-form-checkbox">
+                    <input formControlName="rememberMe" class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                    <label class="label-checkbox100" for="ckb1">
+                        Remember me
+                    </label>
+                </div>
+                <div>
+                    <a href="javascript:void(0)" class="txt1">
+                        Forgot Password?
+                    </a>
+                </div>
+            </div>
+            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary btn-block mt-3">Login</button>
+            <div class="auth-here">
+                Don't have an account? 
+                <a routerLink="/register">Register Here</a>
+            </div>
+        </form>
+    </div>
+</div>
