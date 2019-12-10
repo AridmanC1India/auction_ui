@@ -9,7 +9,7 @@
                 </div>
                 <div class="error" *ngIf="firstName.errors && (firstName.invalid && firstName.touched)">
                     <span class="text-danger" *ngIf="firstName.errors?.required">First Name is required</span>
-                    <span class="text-danger" *ngIf="firstName.errors?.minlength">First Name must have atleast 4 characters</span>
+                    <span class="text-danger" *ngIf="firstName.errors?.minlength">First Name should contain atleast 3 characters</span>
                 </div>
             </div>
             <div class="form-group">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="error" *ngIf="lastName.errors && (lastName.invalid && lastName.touched)">
                     <span class="text-danger" *ngIf="lastName.errors?.required">Last Name is required</span>
-                    <span class="text-danger" *ngIf="lastName.errors?.minlength">Last Name must have atleast 4 characters</span>
+                    <span class="text-danger" *ngIf="lastName.errors?.minlength">Last Name should contain atleast 3 characters</span>
                 </div>
             </div>
             <div class="form-group">
@@ -34,13 +34,13 @@
             </div>
             <div class="form-group">
                 <div class="control-block">
-                    <input type="password" formControlName="password" class="form-control" placeholder="Password" pattern="(?=.*[!@#\$%\^&\*])" [ngClass]="{'is-valid': password.valid, 'is-invalid': password.invalid && password.touched}">
+                    <input type="password" formControlName="password" class="form-control" placeholder="Password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$" [ngClass]="{'is-valid': password.valid, 'is-invalid': password.invalid && password.touched}">
                     <span class="fa fa-lock"></span>
                 </div>
                 <div class="error" *ngIf="password.errors && (password.invalid && password.touched)">
                     <span class="text-danger" *ngIf="password.errors?.required">Password is required</span>
-                    <span class="text-danger" *ngIf="password.errors?.minlength">Password must have atleast 6 characters</span>
-                    <span class="text-danger" *ngIf="password.errors?.pattern">Password must have atleast 1 special character</span>
+                    <span class="text-danger" *ngIf="password.errors?.pattern">Password must contain minimum 8 characters, at least one letter, one number and one special character
+                </span>
                 </div>
             </div>
             <div class="form-group">
@@ -49,8 +49,9 @@
                     <span class="fa fa-lock"></span>
                 </div>
                 <div class="error" *ngIf="confirmPassword.errors && (confirmPassword.invalid && confirmPassword.touched)">
-                    <span class="text-danger" *ngIf="confirmPassword.errors?.required">Password is required</span>
-                    <span class="text-danger" *ngIf="confirmPassword.errors?.NoPassswordMatch">Password do not match</span>
+                    <span class="text-danger" *ngIf="confirmPassword.errors?.required">Confirm Password is required</span>
+                    <span class="text-danger" *ngIf="confirmPassword.errors?.minlength">Password is invalid</span>
+                    <span class="text-danger" *ngIf="confirmPassword.errors?.NoPassswordMatch">Password & Confirm Password does not match</span>
                 </div>
             </div>
             <div class="form-group">
