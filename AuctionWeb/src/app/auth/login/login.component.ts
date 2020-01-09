@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { UserLogin } from './login.model';
+
+import { OAuthService } from 'angular-oauth2-oidc';
+import { OktaAuthWrapper } from 'src/app/shared/okta.auth.wrapper';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,8 @@ import { UserLogin } from './login.model';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authService : AuthService, private fb : FormBuilder) { }
+  constructor(private fb : FormBuilder,private oauthService: OAuthService,
+    private oktaAuthWrapper: OktaAuthWrapper) { }
   loginForm: FormGroup;
 
   get email(){
@@ -36,9 +39,14 @@ export class LoginComponent implements OnInit {
     })
   }
 
-  onSubmit(loginData : UserLogin){
-    loginData = this.loginForm.value;
-    console.log(loginData);
-  }
+
+
+  onSubmit(loginData : UserLogin) {
+  loginData = this.loginForm.value;
+  console.log(loginData);
+  this.oktaAuthWrapper.login(loginData.email, loginData.password)
+    .then(_ => console.debug('logged in'))
+    .catch(err => console.error('error logging in', err));
+}
 
 }
